@@ -3,56 +3,496 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Armando Alvarez — General Contractor & Design-Build</title>
-  <meta name="description" content="Armando Alvarez is a licensed design-build general contractor crafting custom homes, kitchens, additions and renovations measured in decades — not deadlines." />
-  <meta name="theme-color" content="#000000" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Armando Alvarez — Built to last." />
-  <meta property="og:description" content="Design-build general contracting. Custom homes, kitchens, additions and whole-home renovations." />
+  <title>Armando Alvarez — Design-Build General Contractor</title>
+  <meta name="description" content="Armando Alvarez is a licensed design-build general contractor. Custom homes, kitchens, and additions — designed and built by one crew, on one fixed price. Measured in decades, not deadlines." />
+  <meta name="theme-color" content="#F4F0E8" />
+  <meta property="og:title" content="Armando Alvarez — Built to be lived in for decades." />
+  <meta property="og:description" content="Design-build general contracting. Custom homes, kitchens, additions and whole-home renovations under one roof." />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* ============================================================
+       ARMANDO ALVAREZ — "The Drawing Set"
+       Warm linen canvas · brown-black ink · restrained clay accent.
+       An architect's drawing set: hairline grid, dimension ticks,
+       plate numbers, blueprint image frames. No build, no deps.
+       ============================================================ */
+
+    /* ---------- TOKENS (light / default) ---------- */
+    :root{
+      --paper:#F4F0E8;        /* warm linen canvas            */
+      --paper-2:#EDE7DB;      /* slightly deeper panel        */
+      --paper-3:#E6DFD0;      /* deepest panel                */
+      --ink:#17130D;          /* brown-biased near-black      */
+      --ink-2:#3B342A;        /* secondary text               */
+      --stone:#8C7E6D;        /* warm neutral / captions      */
+      --line:#DBD3C6;         /* hairlines                    */
+      --line-2:#C9BFAE;       /* stronger hairline            */
+      --clay:#B15A38;         /* terracotta accent            */
+      --clay-deep:#98462A;    /* accent pressed               */
+      --on-clay:#F7EFE7;      /* text on clay                 */
+      --frame-a:#E7E0D2;      /* blueprint frame gradient a   */
+      --frame-b:#DED5C4;      /* blueprint frame gradient b   */
+      --grid:rgba(23,19,13,.05);
+      --shadow:0 1px 2px rgba(23,19,13,.04), 0 18px 44px -24px rgba(23,19,13,.24);
+      --sel:rgba(177,90,56,.18);
+
+      --serif:'Iowan Old Style','Palatino Linotype','Palatino','Book Antiqua',Georgia,'Times New Roman',serif;
+      --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+      --mono:'IBM Plex Mono',ui-monospace,'SF Mono','SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace;
+
+      --container:1240px;
+      --gutter:clamp(20px,5vw,64px);
+      --radius:14px;
+      --ease:cubic-bezier(.22,1,.36,1);
+
+      --s1:8px; --s2:16px; --s3:24px; --s4:40px; --s5:64px;
+      --s6:96px; --s7:clamp(72px,11vw,148px);
+    }
+    @media (prefers-color-scheme: dark){
+      :root:not([data-theme="light"]){
+        --paper:#181310; --paper-2:#1F1913; --paper-3:#261F17;
+        --ink:#F2EBDD; --ink-2:#C7BDAC; --stone:#9C8E7B;
+        --line:#332A20; --line-2:#443829;
+        --clay:#D07B54; --clay-deep:#E08A61; --on-clay:#1A130D;
+        --frame-a:#231C15; --frame-b:#2B2318;
+        --grid:rgba(242,235,221,.05);
+        --shadow:0 1px 2px rgba(0,0,0,.3), 0 24px 60px -30px rgba(0,0,0,.7);
+        --sel:rgba(208,123,84,.26);
+      }
+    }
+    :root[data-theme="dark"]{
+      --paper:#181310; --paper-2:#1F1913; --paper-3:#261F17;
+      --ink:#F2EBDD; --ink-2:#C7BDAC; --stone:#9C8E7B;
+      --line:#332A20; --line-2:#443829;
+      --clay:#D07B54; --clay-deep:#E08A61; --on-clay:#1A130D;
+      --frame-a:#231C15; --frame-b:#2B2318;
+      --grid:rgba(242,235,221,.05);
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 24px 60px -30px rgba(0,0,0,.7);
+      --sel:rgba(208,123,84,.26);
+    }
+
+    /* ---------- RESET ---------- */
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    body{
+      margin:0;background:var(--paper);color:var(--ink);
+      font-family:var(--sans);font-size:17px;line-height:1.6;
+      font-feature-settings:"kern","liga";-webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;overflow-x:hidden;
+    }
+    ::selection{background:var(--sel)}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+    h1,h2,h3,h4,p{margin:0}
+    ul{margin:0;padding:0;list-style:none}
+    :focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:3px}
+
+    /* ---------- PRIMITIVES ---------- */
+    .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+    .eyebrow{
+      font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;
+      text-transform:uppercase;color:var(--stone);
+      display:inline-flex;align-items:center;gap:.7em;
+    }
+    .eyebrow::before{content:"";width:26px;height:1px;background:var(--clay);display:inline-block}
+    .eyebrow--plain::before{display:none}
+    .serif{font-family:var(--serif);font-style:italic;font-weight:500}
+    .display{
+      font-family:var(--serif);font-weight:500;line-height:1.02;
+      letter-spacing:-.012em;text-wrap:balance;
+    }
+    .lead{font-size:clamp(18px,2.1vw,21px);line-height:1.55;color:var(--ink-2);max-width:56ch}
+
+    .section{padding-block:var(--s7);position:relative}
+    .rule{height:1px;background:var(--line);width:100%}
+
+    /* Dimension-line section divider (blueprint device) */
+    .dim{
+      display:flex;align-items:center;gap:16px;
+      font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--stone);
+    }
+    .dim::before,.dim::after{content:"";height:1px;background:var(--line);flex:1}
+    .dim__tick{position:relative;padding-inline:2px}
+
+    /* ---------- BUTTONS ---------- */
+    .btn{
+      --bg:var(--ink);--fg:var(--paper);
+      position:relative;display:inline-flex;align-items:center;gap:.6em;
+      padding:15px 26px;border-radius:100px;font-size:14.5px;font-weight:500;
+      letter-spacing:.01em;color:var(--fg);background:var(--bg);
+      overflow:hidden;isolation:isolate;transition:transform .5s var(--ease);
+      will-change:transform;
+    }
+    .btn svg{width:15px;height:15px;transition:transform .5s var(--ease)}
+    .btn::after{
+      content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;
+      background:var(--clay);transform:translateY(101%);transition:transform .5s var(--ease);
+    }
+    .btn:hover::after{transform:translateY(0)}
+    .btn:hover{color:var(--on-clay)}
+    .btn:hover svg{transform:translate(3px,-3px)}
+    .btn--clay{--bg:var(--clay);--fg:var(--on-clay)}
+    .btn--clay::after{background:var(--ink)}
+    .btn--clay:hover{color:var(--paper)}
+    .btn--ghost{--bg:transparent;--fg:var(--ink);border:1px solid var(--line-2)}
+    .btn--ghost::after{background:var(--ink)}
+    .btn--ghost:hover{color:var(--paper);border-color:var(--ink)}
+    .btn--block{width:100%;justify-content:center;padding-block:17px}
+
+    .link{
+      display:inline-flex;align-items:center;gap:.5em;font-weight:500;font-size:15px;
+      position:relative;padding-bottom:3px;
+    }
+    .link::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+      background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+    .link:hover::after{transform:scaleX(1)}
+    .link svg{width:15px;height:15px;transition:transform .4s var(--ease)}
+    .link:hover svg{transform:translateX(4px)}
+
+    /* ---------- BLUEPRINT IMAGE FRAME ---------- */
+    .frame{
+      position:relative;overflow:hidden;border-radius:var(--radius);
+      background:
+        linear-gradient(135deg,var(--frame-a),var(--frame-b));
+      border:1px solid var(--line);
+    }
+    .frame::before{ /* blueprint grid — shows before/if photo is absent */
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+                       linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+      background-size:34px 34px;background-position:center;
+      -webkit-mask-image:radial-gradient(120% 120% at 50% 40%,#000 55%,transparent 100%);
+              mask-image:radial-gradient(120% 120% at 50% 40%,#000 55%,transparent 100%);
+    }
+    .frame::after{ /* center registration mark */
+      content:"";position:absolute;left:50%;top:50%;width:18px;height:18px;
+      transform:translate(-50%,-50%);opacity:.5;pointer-events:none;
+      background:
+        linear-gradient(var(--stone),var(--stone)) center/1px 100% no-repeat,
+        linear-gradient(var(--stone),var(--stone)) center/100% 1px no-repeat;
+    }
+    .frame img{
+      position:relative;z-index:1;width:100%;height:100%;object-fit:cover;
+      opacity:0;transition:opacity .9s var(--ease),transform 1.2s var(--ease);
+      transform:scale(1.04);
+    }
+    .frame img.is-loaded{opacity:1;transform:scale(1)}
+    .frame__plate{
+      position:absolute;z-index:2;left:14px;bottom:12px;
+      font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--stone);background:color-mix(in srgb,var(--paper) 82%,transparent);
+      padding:5px 9px;border-radius:100px;border:1px solid var(--line);
+      backdrop-filter:blur(4px);
+    }
+
+    /* ---------- PROGRESS + NAV ---------- */
+    .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);
+      transform-origin:left;background:var(--clay);z-index:120}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:100;transition:background .4s var(--ease),border-color .4s var(--ease)}
+    .nav::after{content:"";position:absolute;inset:0;bottom:auto;height:100%;
+      background:color-mix(in srgb,var(--paper) 80%,transparent);
+      backdrop-filter:blur(10px) saturate(120%);opacity:0;transition:opacity .4s var(--ease);z-index:-1}
+    .nav.is-stuck::after{opacity:1}
+    .nav.is-stuck{border-bottom:1px solid var(--line)}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+    .brand{display:inline-flex;align-items:baseline;gap:9px;font-weight:600;letter-spacing:.02em}
+    .brand__mark{width:15px;height:15px;position:relative;transform:translateY(1px)}
+    .brand__mark::before,.brand__mark::after{content:"";position:absolute;inset:0;border:1.5px solid var(--ink)}
+    .brand__mark::after{transform:rotate(45deg) scale(.62);border-color:var(--clay)}
+    .brand__name{font-family:var(--serif);font-weight:600;font-size:19px;font-style:normal}
+    .brand__tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+    .nav__links{display:flex;gap:34px}
+    .nav__link{font-size:14.5px;color:var(--ink-2);position:relative;padding-block:6px}
+    .nav__link::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);
+      transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+    .nav__link:hover{color:var(--ink)}.nav__link:hover::after{transform:scaleX(1)}
+    .nav__actions{display:flex;align-items:center;gap:18px}
+    .nav__phone{font-family:var(--mono);font-size:13px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:8px;color:var(--ink-2)}
+    .nav__phone svg{width:15px;height:15px}
+    .nav__phone:hover{color:var(--clay)}
+    .nav__toggle{display:none;width:44px;height:44px;border:1px solid var(--line-2);border-radius:100px;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+    .nav__toggle span{width:17px;height:1.5px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+    .theme{width:44px;height:44px;border:1px solid var(--line-2);border-radius:100px;display:grid;place-items:center;transition:border-color .3s}
+    .theme:hover{border-color:var(--ink)}
+    .theme svg{width:17px;height:17px}
+    .theme .moon{display:none}
+    :root[data-theme="dark"] .theme .sun{display:none}
+    :root[data-theme="dark"] .theme .moon{display:block}
+    @media (prefers-color-scheme:dark){
+      :root:not([data-theme="light"]) .theme .sun{display:none}
+      :root:not([data-theme="light"]) .theme .moon{display:block}
+    }
+
+    /* Mobile menu */
+    .nav__mobile{position:fixed;inset:0;z-index:99;background:var(--paper);
+      transform:translateY(-100%);transition:transform .6s var(--ease);
+      display:flex;flex-direction:column;justify-content:center;padding:var(--gutter);visibility:hidden}
+    .nav__mobile.is-open{transform:translateY(0);visibility:visible}
+    .nav__mobile ul{display:flex;flex-direction:column;gap:6px}
+    .nav__mobile a{font-family:var(--serif);font-size:clamp(34px,10vw,58px);font-weight:500;line-height:1.1;display:block;padding-block:6px}
+    .nav__mobile-foot{margin-top:var(--s5);display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:13px;color:var(--stone)}
+
+    /* ---------- HERO ---------- */
+    .hero{position:relative;padding-top:132px;padding-bottom:var(--s6)}
+    .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:end}
+    .hero__title{font-size:clamp(48px,8.4vw,116px);margin-top:22px}
+    .hero__title .row{display:block;overflow:hidden}
+    .hero__title .row span{display:block;transform:translateY(105%);transition:transform 1s var(--ease)}
+    .hero.is-in .hero__title .row span{transform:translateY(0)}
+    .hero__title .row:nth-child(2) span{transition-delay:.09s}
+    .hero__title .row:nth-child(3) span{transition-delay:.18s}
+    .hero__meta{max-width:44ch}
+    .hero__sub{margin-top:26px;font-size:clamp(16.5px,1.7vw,18.5px);color:var(--ink-2);line-height:1.6}
+    .hero__cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+    .hero__fig{position:relative}
+    .hero__frame{aspect-ratio:4/5;box-shadow:var(--shadow)}
+    .hero__spec{
+      position:absolute;left:-14px;bottom:26px;z-index:3;
+      background:var(--paper);border:1px solid var(--line);border-radius:12px;
+      padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:20px;
+    }
+    .hero__spec .k{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+    .hero__spec .v{font-family:var(--serif);font-size:24px;font-weight:500;margin-top:2px}
+    .hero__reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease) .3s,transform 1s var(--ease) .3s}
+    .hero.is-in .hero__reveal{opacity:1;transform:none}
+
+    /* ---------- MARQUEE ---------- */
+    .marquee{border-block:1px solid var(--line);padding-block:20px;overflow:hidden;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+    .marquee__track{display:flex;gap:0;width:max-content;animation:marq 34s linear infinite}
+    .marquee:hover .marquee__track{animation-play-state:paused}
+    .marquee__item{display:inline-flex;align-items:center;gap:20px;padding-inline:20px;
+      font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);font-weight:500;white-space:nowrap;color:var(--ink)}
+    .marquee__item b{font-style:italic;font-weight:500;color:var(--clay)}
+    .marquee__dot{width:6px;height:6px;border-radius:50%;background:var(--line-2)}
+    @keyframes marq{to{transform:translateX(-50%)}}
+
+    /* ---------- SECTION HEAD ---------- */
+    .head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:var(--s5)}
+    .head__title{font-size:clamp(30px,4.6vw,54px);margin-top:18px;max-width:20ch}
+    .h2{font-family:var(--serif);font-weight:500;line-height:1.06;letter-spacing:-.01em;text-wrap:balance}
+
+    /* ---------- SERVICES ---------- */
+    .svc{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .svc__cell{grid-column:span 2;background:var(--paper);padding:30px 28px 26px;position:relative;
+      min-height:230px;display:flex;flex-direction:column;transition:background .5s var(--ease)}
+    .svc__cell--wide{grid-column:span 3}
+    .svc__cell:hover{background:var(--paper-2)}
+    .svc__no{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--stone)}
+    .svc__thumb{margin-top:16px;aspect-ratio:16/10;border-radius:10px}
+    .svc__cell--wide .svc__thumb{aspect-ratio:16/7}
+    .svc__title{font-family:var(--serif);font-size:clamp(22px,2.4vw,27px);font-weight:500;margin-top:20px}
+    .svc__text{color:var(--ink-2);font-size:15px;line-height:1.55;margin-top:8px;max-width:40ch}
+    .svc__cell .link{margin-top:auto;padding-top:18px;color:var(--clay);font-size:13.5px;
+      opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+    .svc__cell:hover .link{opacity:1;transform:none}
+
+    /* ---------- FEATURE ---------- */
+    .feature{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,84px);align-items:center}
+    .feature__fig{aspect-ratio:5/6;box-shadow:var(--shadow)}
+    .feature__list{margin-top:32px;display:flex;flex-direction:column}
+    .feature__list li{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--line);font-size:16px}
+    .feature__list li:last-child{border-bottom:1px solid var(--line)}
+    .feature__list .n{font-family:var(--mono);font-size:12px;color:var(--clay);padding-top:3px;min-width:26px}
+    .feature__list b{font-weight:600}
+    .feature__list span.d{display:block;color:var(--ink-2);font-size:14.5px;margin-top:3px}
+
+    /* ---------- PROCESS ---------- */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .step{padding:30px 26px 30px 0;border-top:1.5px solid var(--ink);position:relative}
+    .step__no{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--clay)}
+    .step__title{font-family:var(--serif);font-size:26px;font-weight:500;margin-top:22px}
+    .step__text{color:var(--ink-2);font-size:15px;line-height:1.55;margin-top:10px;max-width:32ch}
+    .step__bar{position:absolute;top:-1.5px;left:0;height:1.5px;width:0;background:var(--clay);transition:width 1s var(--ease)}
+    .step.is-in .step__bar{width:100%}
+
+    /* ---------- STATS ---------- */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}
+    .stat{background:var(--paper);padding:38px 8px 34px}
+    .stat__num{font-family:var(--serif);font-size:clamp(44px,6vw,72px);font-weight:500;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+    .stat__suf{color:var(--clay)}
+    .stat__label{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-top:14px}
+
+    /* ---------- GALLERY ---------- */
+    .gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:200px;gap:16px}
+    .tile{position:relative;overflow:hidden;border-radius:var(--radius);grid-column:span 2}
+    .tile--wide{grid-column:span 4}.tile--tall{grid-row:span 2}
+    .tile .frame{width:100%;height:100%;border-radius:0;border:0}
+    .tile img{transition:transform 1.3s var(--ease),opacity .9s var(--ease)}
+    .tile:hover img.is-loaded{transform:scale(1.06)}
+    .tile__cap{position:absolute;left:16px;bottom:16px;z-index:3;
+      transform:translateY(8px);opacity:0;transition:transform .5s var(--ease),opacity .5s var(--ease)}
+    .tile:hover .tile__cap{transform:none;opacity:1}
+    .tile__cap .t{display:block;font-family:var(--serif);font-size:20px;font-weight:500;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.55)}
+    .tile__cap .l{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:3px;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+    .tile__grad{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(10,7,4,.5),transparent 55%);opacity:0;transition:opacity .5s var(--ease)}
+    .tile:hover .tile__grad{opacity:1}
+
+    /* ---------- TESTIMONIALS ---------- */
+    .quotes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .quote{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px;display:flex;flex-direction:column}
+    .quote__stars{color:var(--clay);font-size:14px;letter-spacing:2px}
+    .quote__text{font-family:var(--serif);font-size:clamp(18px,2vw,22px);line-height:1.45;font-weight:500;margin-top:18px}
+    .quote__by{margin-top:auto;padding-top:26px;display:flex;align-items:center;gap:13px}
+    .quote__av{width:42px;height:42px;border-radius:50%;background:var(--clay);color:var(--on-clay);
+      display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600}
+    .quote__name{font-weight:600;font-size:15px}
+    .quote__role{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-top:2px}
+
+    /* ---------- CTA / CONTACT ---------- */
+    .cta{background:var(--ink);color:var(--paper);border-radius:calc(var(--radius) + 8px);
+      padding:clamp(40px,6vw,84px);position:relative;overflow:hidden}
+    .cta__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);position:relative;z-index:1}
+    .cta .eyebrow{color:color-mix(in srgb,var(--paper) 66%,transparent)}
+    .cta__title{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,60px);line-height:1.04;margin-top:20px;text-wrap:balance}
+    .cta__sub{color:color-mix(in srgb,var(--paper) 74%,transparent);margin-top:22px;max-width:42ch;font-size:16.5px}
+    .cta__contacts{margin-top:38px;display:flex;flex-direction:column;gap:2px}
+    .cta__row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid rgba(255,255,255,.12)}
+    .cta__row:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+    .cta__row .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--paper) 55%,transparent)}
+    .cta__row .v{font-size:15px;text-align:right}
+    .cta__row .v:hover{color:var(--clay)}
+    .cta__glow{position:absolute;width:520px;height:520px;border-radius:50%;right:-140px;top:-160px;
+      background:radial-gradient(circle,rgba(177,90,56,.4),transparent 66%);filter:blur(20px);z-index:0}
+
+    /* Form */
+    .form{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:clamp(26px,3vw,36px);box-shadow:var(--shadow)}
+    .field{margin-bottom:20px}
+    .field label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:9px}
+    .field input,.field textarea{width:100%;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;
+      padding:13px 15px;font:inherit;font-size:15px;color:var(--ink);transition:border-color .3s,background .3s}
+    .field input::placeholder,.field textarea::placeholder{color:color-mix(in srgb,var(--stone) 85%,transparent)}
+    .field input:focus,.field textarea:focus{outline:none;border-color:var(--clay);background:var(--paper)}
+    .field textarea{resize:vertical;min-height:104px}
+    .field.err input,.field.err textarea{border-color:#c0492e}
+    .field__err{color:#c0492e;font-size:12.5px;margin-top:7px;display:none}
+    .field.err .field__err{display:block}
+    .form__note{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--stone);margin-top:16px;text-align:center}
+    .form__ok{display:none;align-items:center;gap:10px;background:var(--paper-2);border:1px solid var(--line);
+      border-radius:9px;padding:14px 16px;margin-top:16px;font-size:14.5px;color:var(--ink)}
+    .form__ok.show{display:flex}
+    .form__ok svg{width:18px;height:18px;color:var(--clay);flex-shrink:0}
+
+    /* ---------- FOOTER ---------- */
+    .footer{padding-top:var(--s6);padding-bottom:38px}
+    .footer__big{font-family:var(--serif);font-weight:500;font-size:clamp(56px,15vw,190px);line-height:.9;letter-spacing:-.02em;text-align:center;margin-bottom:var(--s6)}
+    .footer__cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-block:var(--s5);border-top:1px solid var(--line)}
+    .footer__cols p{color:var(--ink-2);font-size:14.5px;line-height:1.55;margin-top:16px;max-width:34ch}
+    .footer__col h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:16px;font-weight:500}
+    .footer__col li{margin-bottom:11px}
+    .footer__col a{color:var(--ink-2);font-size:14.5px}
+    .footer__col a:hover{color:var(--clay)}
+    .footer__bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:26px;border-top:1px solid var(--line);
+      font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--stone)}
+    .footer__social{display:flex;gap:20px}
+    .footer__social a:hover{color:var(--clay)}
+
+    /* ---------- REVEAL ---------- */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+    .reveal.is-in{opacity:1;transform:none}
+    [data-d="1"]{transition-delay:.08s}[data-d="2"]{transition-delay:.16s}[data-d="3"]{transition-delay:.24s}
+
+    /* ---------- BACK TO TOP ---------- */
+    .totop{position:fixed;right:22px;bottom:22px;z-index:80;width:46px;height:46px;border-radius:50%;
+      background:var(--ink);color:var(--paper);display:grid;place-items:center;box-shadow:var(--shadow);
+      opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:all .5s var(--ease)}
+    .totop.show{opacity:1;transform:none;pointer-events:auto}
+    .totop svg{width:18px;height:18px}
+    .totop:hover{background:var(--clay);color:var(--on-clay)}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:1024px){
+      .hero__grid{grid-template-columns:1fr;gap:44px}
+      .hero__fig{max-width:520px}
+      .feature{grid-template-columns:1fr;gap:40px}
+      .svc__cell,.svc__cell--wide{grid-column:span 3}
+      .steps{grid-template-columns:1fr 1fr;gap:0 32px}
+      .step{padding-right:0}
+      .footer__cols{grid-template-columns:1fr 1fr;gap:36px}
+    }
+    @media (max-width:860px){
+      .nav__links,.nav__phone{display:none}
+      .nav__toggle{display:flex}
+      .nav.open .nav__toggle span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+      .nav.open .nav__toggle span:nth-child(2){opacity:0}
+      .nav.open .nav__toggle span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+      .head{flex-direction:column;align-items:flex-start;gap:20px}
+      .cta__grid{grid-template-columns:1fr;gap:40px}
+      .gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:170px}
+      .tile,.tile--wide{grid-column:span 2}.tile--tall{grid-row:span 1}
+      .quotes{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .stat{padding-block:30px}
+    }
+    @media (max-width:560px){
+      body{font-size:16px}
+      .section{padding-block:var(--s6)}
+      .svc{grid-template-columns:1fr}
+      .svc__cell,.svc__cell--wide{grid-column:span 1;min-height:auto}
+      .svc__cell .link{opacity:1;transform:none}
+      .steps{grid-template-columns:1fr}
+      .footer__cols{grid-template-columns:1fr;gap:30px}
+      .hero__spec{left:0}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+      .reveal,.hero__reveal{opacity:1;transform:none}
+      .hero__title .row span{transform:none}
+      .frame img{opacity:1;transform:none}
+    }
+    .no-js .reveal,.no-js .hero__reveal,.no-js .hero__title .row span,.no-js .frame img{opacity:1;transform:none}
+  </style>
 </head>
-<body>
+<body class="no-js">
   <div class="progress" aria-hidden="true"></div>
 
   <!-- ============================ NAV ============================ -->
-  <header class="nav">
+  <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a href="#top" class="brand" aria-label="Armando Alvarez, home">
-        <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-        Alvarez
+      <a href="#top" class="brand" aria-label="Armando Alvarez — home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">Alvarez</span>
+        <span class="brand__tag">Design–Build</span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
         <a href="#work" class="nav__link">Work</a>
         <a href="#services" class="nav__link">Services</a>
         <a href="#process" class="nav__link">Process</a>
-        <a href="#about" class="nav__link">About</a>
+        <a href="#about" class="nav__link">Approach</a>
       </nav>
 
       <div class="nav__actions">
-        <a href="tel:+15552104408" class="nav__phone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+15552104408" class="nav__phone" aria-label="Call Alvarez">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           (555) 210-4408
         </a>
-        <a href="#contact" class="btn btn--primary btn--sm" data-magnetic><span class="btn__label">Start a project
+        <button class="theme" id="theme" aria-label="Toggle dark mode" type="button">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a href="#contact" class="btn btn--sm" data-magnetic style="padding:12px 20px"><span>Start a project</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </span></a>
-        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+        </a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" type="button">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile menu -->
-  <div class="nav__mobile" id="mobile-menu">
+  <div class="nav__mobile" id="mobileMenu">
     <nav aria-label="Mobile">
       <ul>
         <li><a href="#work">Work</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#process">Process</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">Approach</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -66,235 +506,180 @@
 
     <!-- ============================ HERO ============================ -->
     <section class="hero" id="hero">
-      <div class="hero__media" aria-hidden="true">
-        <!-- Hero video (loads on the live site; a cinematic CSS gradient stands in if it can't). -->
-        <video data-media autoplay muted loop playsinline preload="metadata"
-          poster="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=70">
-          <source src="https://videos.pexels.com/video-files/7578540/7578540-uhd_2560_1440_25fps.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <div class="grain" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__meta">
+            <p class="eyebrow">Design–Build · General Contracting · Since 2004</p>
+            <h1 class="hero__title display">
+              <span class="row"><span>Homes made</span></span>
+              <span class="row"><span>to be&nbsp;<span class="serif">lived&nbsp;in</span></span></span>
+              <span class="row"><span>for decades.</span></span>
+            </h1>
+            <div class="hero__reveal">
+              <p class="hero__sub">Ground-up custom homes, kitchens, and additions — designed and built by one crew, on one number, and a fixed price you can hold us to. We measure our work in decades, not deadlines.</p>
+              <div class="hero__cta">
+                <a href="#contact" class="btn" data-magnetic><span>Start your build</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </a>
+                <a href="#work" class="btn btn--ghost" data-magnetic><span>See selected work</span></a>
+              </div>
+            </div>
+          </div>
 
-      <div class="container hero__inner">
-        <p class="eyebrow hero__eyebrow">Design–Build&nbsp;·&nbsp;General Contracting&nbsp;·&nbsp;Est. 2004</p>
-        <h1 class="hero__title">
-          <span class="word"><span>We</span></span>
-          <span class="word"><span>build</span></span>
-          <span class="word"><span>what</span></span>
-          <span class="word"><span>you'll</span></span>
-          <span class="word"><span class="serif">pass&nbsp;on.</span></span>
-        </h1>
-        <div class="hero__sub">
-          <p>From ground-up custom homes to the kitchen your family gathers in — Armando Alvarez and crew deliver work measured in decades, not deadlines.</p>
-          <div class="hero__cta">
-            <a href="#contact" class="btn btn--primary" data-magnetic><span class="btn__label">Start your project
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
-            </span></a>
-            <button class="btn btn--ghost" data-lightbox-open><span class="btn__label">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              Watch our work
-            </span></button>
+          <div class="hero__fig hero__reveal">
+            <div class="frame hero__frame">
+              <img data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=75" alt="A modern custom home with warm timber and stone at dusk" />
+              <span class="frame__plate">Plate 00 · The Ridgeline Residence</span>
+            </div>
+            <div class="hero__spec" aria-hidden="true">
+              <div><div class="k">Delivered</div><div class="v">500+</div></div>
+              <div><div class="k">On schedule</div><div class="v">98%</div></div>
+              <div><div class="k">Warranty</div><div class="v">10 yr</div></div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="hero__foot">
-        <div class="container">
-          <button class="play" data-lightbox-open aria-label="Play the Alvarez showreel">
-            <span class="play__disc" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <span class="play__label">The&nbsp;Reel</span>
-          </button>
-        </div>
-      </div>
-
-      <a href="#work" class="scroll-cue" aria-label="Scroll to work">
-        <span>Scroll</span>
-        <span class="scroll-cue__line" aria-hidden="true"></span>
-      </a>
     </section>
 
     <!-- =========================== MARQUEE =========================== -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <span class="marquee__item">Licensed&nbsp;&amp;&nbsp;Insured<span class="marquee__dot"></span></span>
-        <span class="marquee__item"><span class="serif">Twenty</span>&nbsp;years<span class="marquee__dot"></span></span>
-        <span class="marquee__item">500+&nbsp;projects<span class="marquee__dot"></span></span>
-        <span class="marquee__item">On&nbsp;time,&nbsp;on&nbsp;budget<span class="marquee__dot"></span></span>
-        <span class="marquee__item"><span class="serif">Five-star</span>&nbsp;rated<span class="marquee__dot"></span></span>
-        <span class="marquee__item">10-year&nbsp;warranty<span class="marquee__dot"></span></span>
+        <span class="marquee__item"><b>Twenty</b>&nbsp;years on the tools<span class="marquee__dot"></span></span>
+        <span class="marquee__item">500+&nbsp;projects delivered<span class="marquee__dot"></span></span>
+        <span class="marquee__item">One&nbsp;crew, one&nbsp;number<span class="marquee__dot"></span></span>
+        <span class="marquee__item"><b>Fixed</b>-price contracts<span class="marquee__dot"></span></span>
+        <span class="marquee__item">10-year&nbsp;workmanship warranty<span class="marquee__dot"></span></span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee__item">Licensed&nbsp;&amp;&nbsp;Insured<span class="marquee__dot"></span></span>
+        <span class="marquee__item"><b>Twenty</b>&nbsp;years on the tools<span class="marquee__dot"></span></span>
+        <span class="marquee__item">500+&nbsp;projects delivered<span class="marquee__dot"></span></span>
+        <span class="marquee__item">One&nbsp;crew, one&nbsp;number<span class="marquee__dot"></span></span>
+        <span class="marquee__item"><b>Fixed</b>-price contracts<span class="marquee__dot"></span></span>
+        <span class="marquee__item">10-year&nbsp;workmanship warranty<span class="marquee__dot"></span></span>
       </div>
     </div>
 
     <!-- =========================== SERVICES =========================== -->
     <section class="section" id="services">
       <div class="container">
-        <div class="section-head">
+        <div class="head">
           <div>
-            <p class="eyebrow reveal">What we do</p>
-            <h2 class="h2 section-head__title reveal" data-reveal-delay="1">Six ways we turn a lot, a room, or a blank wall into <span class="serif">something</span> permanent.</h2>
+            <p class="eyebrow reveal">What we build</p>
+            <h2 class="head__title h2 reveal" data-d="1">Six disciplines, one standard — turning a lot, a room, or a bare wall into <span class="serif">something permanent.</span></h2>
           </div>
-          <a href="#contact" class="link reveal" data-reveal-delay="2">Discuss your build
+          <a href="#contact" class="link reveal" data-d="2">Discuss your build
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
         </div>
 
-        <div class="services__grid">
-          <article class="card card--wide reveal" tabindex="0">
-            <div class="card__media">
-              <img data-media loading="lazy" alt="Modern custom home at dusk"
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=70" />
+        <div class="svc reveal">
+          <div class="svc__cell svc__cell--wide">
+            <span class="svc__no">01 / Signature</span>
+            <div class="frame svc__thumb">
+              <img data-src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=75" alt="Interior of a custom-built modern home" />
             </div>
-            <span class="card__index">01</span>
-            <span class="card__badge">Signature</span>
-            <div class="card__body">
-              <h3 class="card__title">Custom Homes</h3>
-              <p class="card__text">Ground-up builds designed around how you actually live — not a floor plan pulled off a shelf.</p>
+            <h3 class="svc__title">Custom Homes</h3>
+            <p class="svc__text">Ground-up homes drawn around how you actually live — not a plan pulled off a shelf.</p>
+            <a href="#contact" class="link">Start a home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="svc__cell">
+            <span class="svc__no">02 / Most requested</span>
+            <div class="frame svc__thumb">
+              <img data-src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=75" alt="Bright renovated kitchen" />
             </div>
-          </article>
-
-          <article class="card reveal" data-reveal-delay="1" tabindex="0">
-            <div class="card__media">
-              <img data-media loading="lazy" alt="Bright renovated kitchen"
-                src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=70" />
+            <h3 class="svc__title">Kitchen &amp; Bath</h3>
+            <p class="svc__text">The rooms a family gathers in and a house sells on. Built to be used hard, loved longer.</p>
+            <a href="#contact" class="link">Remodel a room <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="svc__cell">
+            <span class="svc__no">03 / Space</span>
+            <div class="frame svc__thumb">
+              <img data-src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=75" alt="Timber-framed home addition under construction" />
             </div>
-            <span class="card__index">02</span>
-            <span class="card__badge">Most requested</span>
-            <div class="card__body">
-              <h3 class="card__title">Kitchen &amp; Bath</h3>
-              <p class="card__text">The rooms that sell a home and center a family. Built to be used hard and loved longer.</p>
+            <h3 class="svc__title">Home Additions</h3>
+            <p class="svc__text">More room without leaving the address you love — additions that read as original, never bolted on.</p>
+            <a href="#contact" class="link">Add square footage <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="svc__cell">
+            <span class="svc__no">04 / Transform</span>
+            <div class="frame svc__thumb">
+              <img data-src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=75" alt="Renovated open-plan living room" />
             </div>
-          </article>
-
-          <article class="card reveal" data-reveal-delay="2" tabindex="0">
-            <div class="card__media">
-              <img data-media loading="lazy" alt="Home addition framing"
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" />
+            <h3 class="svc__title">Whole-Home Renovation</h3>
+            <p class="svc__text">Keep the walls that matter, rethink the rest. One accountable crew, start to finish.</p>
+            <a href="#contact" class="link">Rethink your home <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="svc__cell">
+            <span class="svc__no">05 / Outdoor</span>
+            <div class="frame svc__thumb">
+              <img data-src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=75" alt="Outdoor deck and living space" />
             </div>
-            <span class="card__index">03</span>
-            <span class="card__badge">Space</span>
-            <div class="card__body">
-              <h3 class="card__title">Home Additions</h3>
-              <p class="card__text">More room without leaving the address you love — additions that read as original, not bolted on.</p>
+            <h3 class="svc__title">Outdoor Living</h3>
+            <p class="svc__text">Decks, patios, and outdoor kitchens that pull the whole gathering past the back door.</p>
+            <a href="#contact" class="link">Extend outdoors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="svc__cell">
+            <span class="svc__no">06 / Commercial</span>
+            <div class="frame svc__thumb">
+              <img data-src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=75" alt="Modern commercial interior build-out" />
             </div>
-          </article>
-
-          <article class="card reveal" tabindex="0">
-            <div class="card__media">
-              <img data-media loading="lazy" alt="Renovated modern living room"
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=70" />
-            </div>
-            <span class="card__index">04</span>
-            <span class="card__badge">Transform</span>
-            <div class="card__body">
-              <h3 class="card__title">Whole-Home Renovation</h3>
-              <p class="card__text">Keep the walls that matter. Rethink everything else. One accountable crew, start to finish.</p>
-            </div>
-          </article>
-
-          <article class="card reveal" data-reveal-delay="1" tabindex="0">
-            <div class="card__media">
-              <img data-media loading="lazy" alt="Outdoor living deck"
-                src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=70" />
-            </div>
-            <span class="card__index">05</span>
-            <span class="card__badge">Outdoor</span>
-            <div class="card__body">
-              <h3 class="card__title">Outdoor Living</h3>
-              <p class="card__text">Decks, patios and full outdoor kitchens that pull the whole party past the back door.</p>
-            </div>
-          </article>
-
-          <article class="card reveal" data-reveal-delay="2" tabindex="0">
-            <div class="card__media">
-              <img data-media loading="lazy" alt="Commercial interior build-out"
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" />
-            </div>
-            <span class="card__index">06</span>
-            <span class="card__badge">Commercial</span>
-            <div class="card__body">
-              <h3 class="card__title">Commercial Build-Outs</h3>
-              <p class="card__text">Storefronts, offices and restaurants — opened on schedule, inspected without drama.</p>
-            </div>
-          </article>
+            <h3 class="svc__title">Commercial Build-Outs</h3>
+            <p class="svc__text">Storefronts, offices, and restaurants — opened on schedule, inspected without drama.</p>
+            <a href="#contact" class="link">Build your space <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================== FEATURE =========================== -->
+    <!-- =========================== FEATURE / APPROACH =========================== -->
     <section class="section" id="about">
       <div class="container">
-        <div class="feature__grid">
-          <div class="feature__media reveal">
-            <img data-media loading="lazy" alt="Armando Alvarez reviewing plans on site"
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1100&q=72" />
-            <span class="feature__tag">Design–build under one roof</span>
+        <div class="feature">
+          <div class="feature__fig frame reveal">
+            <img data-src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1000&q=75" alt="Builder reviewing drawings on a job site" />
+            <span class="frame__plate">Plate 07 · On site, first walk</span>
           </div>
-
-          <div class="feature__body reveal" data-reveal-delay="1">
-            <p class="eyebrow">Why Alvarez</p>
-            <h2 class="h2">One crew, one number, one <span class="serif">standard</span> — from first sketch to the day you get the keys.</h2>
-            <p class="lead">Most projects go sideways in the handoffs — architect to contractor, contractor to sub, sub to whoever. We keep design and build under the same roof, so nothing gets lost in translation and no one gets to point fingers.</p>
+          <div class="reveal" data-d="1">
+            <p class="eyebrow">The approach</p>
+            <h2 class="h2" style="font-size:clamp(28px,4vw,46px);margin-top:18px">One crew, one number, one <span class="serif">standard</span> — first sketch to final key.</h2>
+            <p class="lead" style="margin-top:22px">Most builds go sideways in the handoffs — architect to contractor, contractor to sub, sub to whoever's free. We keep design and construction under one roof, so nothing gets lost in translation and no one gets to point fingers.</p>
             <ul class="feature__list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                A single point of contact from day one
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                Fixed-price transparency — the number you sign is the number you pay
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                In-house craftsmen, not a rotating cast of subs
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                Permits, inspections and paperwork handled for you
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                Backed by a 10-year workmanship warranty
-              </li>
+              <li><span class="n">01</span><span><b>A single point of contact.</b><span class="d">One person owns your project from the first walk to the final punch list.</span></span></li>
+              <li><span class="n">02</span><span><b>Fixed-price transparency.</b><span class="d">The number you sign is the number you pay. Change orders in writing, or not at all.</span></span></li>
+              <li><span class="n">03</span><span><b>In-house craftsmen.</b><span class="d">Our own carpenters and finishers — not a rotating cast of the cheapest subs available.</span></span></li>
+              <li><span class="n">04</span><span><b>Permits &amp; inspections, handled.</b><span class="d">We pull the paperwork and stand in front of the inspector, so you don't have to.</span></span></li>
+              <li><span class="n">05</span><span><b>A 10-year workmanship warranty.</b><span class="d">We answer the phone long after the last invoice clears.</span></span></li>
             </ul>
-            <a href="#process" class="link feature__cta">See how we work
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =========================== PROCESS =========================== -->
-    <section class="section process" id="process">
+    <section class="section" id="process">
       <div class="container">
-        <div class="section-head">
+        <div class="head">
           <div>
             <p class="eyebrow reveal">The process</p>
-            <h2 class="h2 section-head__title reveal" data-reveal-delay="1">Four steps. No surprises. Signed off at <span class="serif">every</span> stage.</h2>
+            <h2 class="head__title h2 reveal" data-d="1">Four stages. No surprises. Signed off at <span class="serif">every</span> line.</h2>
           </div>
         </div>
-
-        <div class="process__grid">
-          <div class="step reveal">
-            <div class="step__num">01</div>
-            <h3 class="step__title">Consult</h3>
+        <div class="steps">
+          <div class="step reveal"><div class="step__bar"></div>
+            <div class="step__no">Stage 01</div><h3 class="step__title">Consult</h3>
             <p class="step__text">We walk the space, learn how you'll use it, and give you a straight answer on scope and budget — free, no pressure.</p>
           </div>
-          <div class="step reveal" data-reveal-delay="1">
-            <div class="step__num">02</div>
-            <h3 class="step__title">Design</h3>
-            <p class="step__text">Plans, materials and a fixed price you can actually build to. You approve every line before a tool comes out.</p>
+          <div class="step reveal" data-d="1"><div class="step__bar"></div>
+            <div class="step__no">Stage 02</div><h3 class="step__title">Design</h3>
+            <p class="step__text">Plans, materials, and a fixed price you can build to. You approve every line before a tool comes out.</p>
           </div>
-          <div class="step reveal" data-reveal-delay="2">
-            <div class="step__num">03</div>
-            <h3 class="step__title">Build</h3>
+          <div class="step reveal" data-d="2"><div class="step__bar"></div>
+            <div class="step__no">Stage 03</div><h3 class="step__title">Build</h3>
             <p class="step__text">One dedicated crew, a clean site, and weekly updates so you always know exactly where things stand.</p>
           </div>
-          <div class="step reveal" data-reveal-delay="3">
-            <div class="step__num">04</div>
-            <h3 class="step__title">Handover</h3>
+          <div class="step reveal" data-d="3"><div class="step__bar"></div>
+            <div class="step__no">Stage 04</div><h3 class="step__title">Handover</h3>
             <p class="step__text">A final walkthrough, every detail dialed in, and a 10-year warranty in your hands. Then we get out of your way.</p>
           </div>
         </div>
@@ -302,81 +687,54 @@
     </section>
 
     <!-- =========================== STATS =========================== -->
-    <section class="section" id="numbers">
-      <div class="container">
-        <div class="stats__grid">
-          <div class="stat reveal">
-            <div class="stat__num"><span class="stat__num-value" data-count="20">0</span><span class="stat__suffix">+</span></div>
-            <div class="stat__label">Years building</div>
-            <div class="stat__bar"></div>
-          </div>
-          <div class="stat reveal" data-reveal-delay="1">
-            <div class="stat__num"><span class="stat__num-value" data-count="500">0</span><span class="stat__suffix">+</span></div>
-            <div class="stat__label">Projects delivered</div>
-            <div class="stat__bar"></div>
-          </div>
-          <div class="stat reveal" data-reveal-delay="2">
-            <div class="stat__num"><span class="stat__num-value" data-count="98">0</span><span class="stat__suffix">%</span></div>
-            <div class="stat__label">Finished on schedule</div>
-            <div class="stat__bar"></div>
-          </div>
-          <div class="stat reveal" data-reveal-delay="3">
-            <div class="stat__num"><span class="stat__num-value" data-count="4.9" data-decimals="1">0</span><span class="stat__suffix">★</span></div>
-            <div class="stat__label">Homeowner rating</div>
-            <div class="stat__bar"></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="stats reveal">
+      <div class="stat"><div class="stat__num"><span data-count="20">0</span><span class="stat__suf">+</span></div><div class="stat__label">Years building</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="500">0</span><span class="stat__suf">+</span></div><div class="stat__label">Projects delivered</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="98">0</span><span class="stat__suf">%</span></div><div class="stat__label">Finished on schedule</div></div>
+      <div class="stat"><div class="stat__num"><span data-count="4.9" data-dec="1">0</span><span class="stat__suf">★</span></div><div class="stat__label">Homeowner rating</div></div>
+    </div>
 
     <!-- =========================== WORK / GALLERY =========================== -->
     <section class="section" id="work">
       <div class="container">
-        <div class="section-head">
+        <div class="head">
           <div>
             <p class="eyebrow reveal">Selected work</p>
-            <h2 class="h2 section-head__title reveal" data-reveal-delay="1">A few we're proud to have <span class="serif">handed</span> over.</h2>
+            <h2 class="head__title h2 reveal" data-d="1">A few we're proud to have <span class="serif">handed over.</span></h2>
           </div>
-          <a href="#contact" class="link reveal" data-reveal-delay="2">Start yours
+          <a href="#contact" class="link reveal" data-d="2">Start yours
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </a>
         </div>
 
-        <div class="gallery__grid">
-          <div class="tile tile--tall tile--wide reveal">
-            <img data-media loading="lazy" alt="Full custom home build"
-              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=70" />
-            <div class="tile__cap"><span class="t">The Ridgeline Residence</span><span class="l">Custom Home · Ground-up</span></div>
+        <div class="gallery reveal">
+          <div class="tile tile--wide tile--tall">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=75" alt="Full custom home build" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">The Ridgeline Residence</span><span class="l">Custom Home · Ground-up</span></div>
           </div>
-          <div class="tile reveal" data-reveal-delay="1">
-            <img data-media loading="lazy" alt="Modern kitchen remodel"
-              src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=70" />
-            <div class="tile__cap"><span class="t">Oakview Kitchen</span><span class="l">Kitchen · Full gut</span></div>
+          <div class="tile">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=75" alt="Modern kitchen remodel" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">Oakview Kitchen</span><span class="l">Kitchen · Full gut</span></div>
           </div>
-          <div class="tile reveal" data-reveal-delay="2">
-            <img data-media loading="lazy" alt="Spa bathroom renovation"
-              src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=70" />
-            <div class="tile__cap"><span class="t">Cedar Spa Bath</span><span class="l">Bath · Renovation</span></div>
+          <div class="tile">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=75" alt="Spa bathroom renovation" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">Cedar Spa Bath</span><span class="l">Bath · Renovation</span></div>
           </div>
-          <div class="tile tile--wide reveal" data-reveal-delay="1">
-            <img data-media loading="lazy" alt="Living room addition"
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=70" />
-            <div class="tile__cap"><span class="t">Harborlight Addition</span><span class="l">Addition · 640 sq ft</span></div>
+          <div class="tile tile--wide">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1000&q=75" alt="Whole-home renovation living space" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">Maple Street Reno</span><span class="l">Whole-home · Renovation</span></div>
           </div>
-          <div class="tile tile--tall reveal" data-reveal-delay="2">
-            <img data-media loading="lazy" alt="Outdoor living space"
-              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=70" />
-            <div class="tile__cap"><span class="t">Sunset Terrace</span><span class="l">Outdoor · Deck &amp; kitchen</span></div>
+          <div class="tile tile--tall">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=800&q=75" alt="Outdoor living deck and kitchen" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">Sunset Terrace</span><span class="l">Outdoor · Deck &amp; kitchen</span></div>
           </div>
-          <div class="tile reveal">
-            <img data-media loading="lazy" alt="Modern staircase detail"
-              src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=800&q=70" />
-            <div class="tile__cap"><span class="t">Maple Street Reno</span><span class="l">Whole-home · Reno</span></div>
+          <div class="tile">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=800&q=75" alt="Home addition with large windows" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">Harborlight Addition</span><span class="l">Addition · 640 sq ft</span></div>
           </div>
-          <div class="tile reveal" data-reveal-delay="1">
-            <img data-media loading="lazy" alt="Commercial cafe build-out"
-              src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=70" />
-            <div class="tile__cap"><span class="t">Grind &amp; Co. Café</span><span class="l">Commercial · Build-out</span></div>
+          <div class="tile">
+            <div class="frame"><img data-src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=75" alt="Commercial cafe build-out" /></div>
+            <div class="tile__grad"></div><div class="tile__cap"><span class="t">Grind &amp; Co. Café</span><span class="l">Commercial · Build-out</span></div>
           </div>
         </div>
       </div>
@@ -385,205 +743,266 @@
     <!-- =========================== TESTIMONIALS =========================== -->
     <section class="section" id="testimonials">
       <div class="container">
-        <div class="section-head">
+        <div class="head">
           <div>
             <p class="eyebrow reveal">In their words</p>
-            <h2 class="h2 section-head__title reveal" data-reveal-delay="1">The reviews that <span class="serif">matter</span> most are the ones from the driveway.</h2>
+            <h2 class="head__title h2 reveal" data-d="1">The reviews that matter most are the ones from the <span class="serif">driveway.</span></h2>
           </div>
         </div>
-
-        <div class="quote__grid">
+        <div class="quotes">
           <figure class="quote reveal">
-            <div class="quote__mark" aria-hidden="true">"</div>
-            <blockquote class="quote__text">Armando gave us one number and one crew, and hit both the date and the budget. Our kitchen looks like it belongs in a magazine — and it's held up to three kids and a dog.</blockquote>
-            <figcaption class="quote__by">
-              <span class="quote__avatar">DM</span>
-              <span>
-                <span class="quote__name">Danielle &amp; Marcus Reyes</span>
-                <span class="quote__role">Kitchen &amp; bath renovation</span>
-              </span>
-            </figcaption>
+            <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="quote__text">Armando gave us one number and one crew, and hit both the date and the budget. Our kitchen looks like a magazine — and it's held up to three kids and a dog.</blockquote>
+            <figcaption class="quote__by"><span class="quote__av">DM</span><span><span class="quote__name">Danielle &amp; Marcus Reyes</span><span class="quote__role">Kitchen &amp; bath renovation</span></span></figcaption>
           </figure>
-
-          <figure class="quote reveal" data-reveal-delay="1">
-            <div class="quote__mark" aria-hidden="true">"</div>
-            <blockquote class="quote__text">We interviewed five builders. Alvarez was the only one who walked the lot, then told us the truth about what it would really take. Two years in our custom home and not a single regret.</blockquote>
-            <figcaption class="quote__by">
-              <span class="quote__avatar">JT</span>
-              <span>
-                <span class="quote__name">James Tran</span>
-                <span class="quote__role">Ground-up custom home</span>
-              </span>
-            </figcaption>
+          <figure class="quote reveal" data-d="1">
+            <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="quote__text">We interviewed five builders. Alvarez was the only one who walked the lot, then told us the truth about what it would really take. Two years in our home and not one regret.</blockquote>
+            <figcaption class="quote__by"><span class="quote__av">JT</span><span><span class="quote__name">James Tran</span><span class="quote__role">Ground-up custom home</span></span></figcaption>
           </figure>
-
           <figure class="quote reveal">
-            <div class="quote__mark" aria-hidden="true">"</div>
-            <blockquote class="quote__text">The weekly updates alone were worth it. I always knew what was happening and why. Clean site every Friday, and the addition looks like it was always part of the house.</blockquote>
-            <figcaption class="quote__by">
-              <span class="quote__avatar">PK</span>
-              <span>
-                <span class="quote__name">Priya Kapoor</span>
-                <span class="quote__role">640 sq ft home addition</span>
-              </span>
-            </figcaption>
+            <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="quote__text">The weekly updates alone were worth it — I always knew what was happening and why. Clean site every Friday, and the addition looks like it was always part of the house.</blockquote>
+            <figcaption class="quote__by"><span class="quote__av">PK</span><span><span class="quote__name">Priya Kapoor</span><span class="quote__role">640 sq ft home addition</span></span></figcaption>
           </figure>
-
-          <figure class="quote reveal" data-reveal-delay="1">
-            <div class="quote__mark" aria-hidden="true">"</div>
-            <blockquote class="quote__text">Opened our café two days ahead of schedule and passed every inspection first try. In this business, that's basically a miracle. We're already planning location number two with them.</blockquote>
-            <figcaption class="quote__by">
-              <span class="quote__avatar">SO</span>
-              <span>
-                <span class="quote__name">Sofia Okafor</span>
-                <span class="quote__role">Commercial build-out</span>
-              </span>
-            </figcaption>
+          <figure class="quote reveal" data-d="1">
+            <div class="quote__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="quote__text">Opened our café two days ahead of schedule and passed every inspection first try. In this business that's basically a miracle. We're already planning location number two with them.</blockquote>
+            <figcaption class="quote__by"><span class="quote__av">SO</span><span><span class="quote__name">Sofia Okafor</span><span class="quote__role">Commercial build-out</span></span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
     <!-- =========================== CTA / CONTACT =========================== -->
-    <section class="section cta" id="contact">
+    <section class="section" id="contact">
       <div class="container">
-        <p class="eyebrow eyebrow--center reveal" style="justify-content:center">Let's talk</p>
-        <h2 class="cta__title reveal" data-reveal-delay="1">Let's build your <span class="serif">legacy</span>.</h2>
-        <p class="lead cta__sub reveal" data-reveal-delay="2">Tell us what you're dreaming up. We'll come out, walk the space, and give you a straight, no-pressure estimate.</p>
+        <div class="cta reveal">
+          <div class="cta__glow" aria-hidden="true"></div>
+          <div class="cta__grid">
+            <div>
+              <p class="eyebrow">Let's talk</p>
+              <h2 class="cta__title">Let's build something <span class="serif">worth keeping.</span></h2>
+              <p class="cta__sub">Tell us what you're dreaming up. We'll come out, walk the space, and give you a straight, no-pressure estimate.</p>
+              <div class="cta__contacts">
+                <div class="cta__row"><span class="k">Call the shop</span><a class="v" href="tel:+15552104408">(555) 210-4408</a></div>
+                <div class="cta__row"><span class="k">Email</span><a class="v" href="mailto:build@armandoalvarezcontractor.com">build@armandoalvarezcontractor.com</a></div>
+                <div class="cta__row"><span class="k">Workshop</span><span class="v">1200 Craftsman Way, Your City, ST</span></div>
+                <div class="cta__row"><span class="k">Hours</span><span class="v">Mon–Fri · 7am – 5pm</span></div>
+              </div>
+            </div>
 
-        <div class="contact__grid" style="margin-top: var(--s-80); text-align:left;">
-          <div class="contact__aside reveal">
-            <div class="contact__item">
-              <div class="k">Call the shop</div>
-              <a class="v" href="tel:+15552104408">(555) 210-4408</a>
-            </div>
-            <div class="contact__item">
-              <div class="k">Email</div>
-              <a class="v" href="mailto:build@armandoalvarezcontractor.com">build@armandoalvarezcontractor.com</a>
-            </div>
-            <div class="contact__item">
-              <div class="k">Workshop</div>
-              <div class="v">1200 Craftsman Way<br />Your City, ST 00000</div>
-            </div>
-            <div class="contact__item">
-              <div class="k">Hours</div>
-              <div class="v">Mon–Fri, 7am–5pm</div>
-            </div>
-          </div>
-
-          <form class="form reveal" data-reveal-delay="1" novalidate>
-            <div class="field">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" />
-              <span class="field__line"></span>
-              <span class="field__error">Please enter your name.</span>
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" />
-              <span class="field__line"></span>
-              <span class="field__error">Enter a valid email address.</span>
-            </div>
-            <div class="field">
-              <label for="phone">Phone <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
-              <span class="field__line"></span>
-            </div>
-            <div class="field">
-              <label for="project">Tell us about the project</label>
-              <textarea id="project" name="project" rows="4" placeholder="Kitchen remodel, new build, addition, timeline, budget range…"></textarea>
-              <span class="field__line"></span>
-              <span class="field__error">Tell us a little about the project.</span>
-            </div>
-            <button type="submit" class="btn btn--primary btn--block form__submit" data-magnetic>
-              <span class="btn__label">Request my estimate
+            <form class="form" id="form" novalidate>
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name" required />
+                <span class="field__err">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+                <span class="field__err">Enter a valid email address.</span>
+              </div>
+              <div class="field">
+                <label for="phone">Phone <span style="text-transform:none;letter-spacing:0;color:var(--stone)">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="project">Tell us about the project</label>
+                <textarea id="project" name="project" placeholder="New build, kitchen remodel, addition — timeline and rough budget if you have one…" required></textarea>
+                <span class="field__err">Tell us a little about the project.</span>
+              </div>
+              <button type="submit" class="btn btn--clay btn--block" data-magnetic><span>Request my estimate</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </button>
-            <div class="form__success">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Thanks — your request is in. We'll be in touch within one business day.
-            </div>
-            <p class="form__note">No spam, no sales pressure. Just an honest conversation about your build.</p>
-          </form>
+              </button>
+              <div class="form__ok" id="formOk">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                Thanks — your request is in. We'll be in touch within one business day.
+              </div>
+              <p class="form__note">No spam, no sales pressure. Just an honest conversation about your build.</p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- =========================== FOOTER =========================== -->
   <footer class="footer">
     <div class="container">
-      <h2 class="footer__display reveal">Built to <span class="serif">last</span>.</h2>
-
+      <h2 class="footer__big reveal">Built to <span class="serif">last.</span></h2>
       <div class="footer__cols">
         <div class="footer__brand">
-          <a href="#top" class="brand">
-            <span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-            Alvarez
-          </a>
-          <p>Licensed &amp; insured design-build general contracting. Custom homes, kitchens, additions and renovations — built once, built right.</p>
+          <a href="#top" class="brand"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">Alvarez</span></a>
+          <p>Licensed &amp; insured design-build general contracting. Custom homes, kitchens, additions, and renovations — built once, built right.</p>
         </div>
-        <div class="footer__col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#services">Custom Homes</a></li>
-            <li><a href="#services">Kitchen &amp; Bath</a></li>
-            <li><a href="#services">Additions</a></li>
-            <li><a href="#services">Renovations</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#work">Our Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Get in touch</h4>
-          <ul>
-            <li><a href="tel:+15552104408">(555) 210-4408</a></li>
-            <li><a href="mailto:build@armandoalvarezcontractor.com">Email us</a></li>
-            <li><a href="#contact">Request estimate</a></li>
-          </ul>
-        </div>
+        <div class="footer__col"><h4>Services</h4><ul>
+          <li><a href="#services">Custom Homes</a></li><li><a href="#services">Kitchen &amp; Bath</a></li>
+          <li><a href="#services">Additions</a></li><li><a href="#services">Renovations</a></li>
+        </ul></div>
+        <div class="footer__col"><h4>Company</h4><ul>
+          <li><a href="#about">Approach</a></li><li><a href="#process">Process</a></li>
+          <li><a href="#work">Our Work</a></li><li><a href="#contact">Contact</a></li>
+        </ul></div>
+        <div class="footer__col"><h4>Get in touch</h4><ul>
+          <li><a href="tel:+15552104408">(555) 210-4408</a></li>
+          <li><a href="mailto:build@armandoalvarezcontractor.com">Email us</a></li>
+          <li><a href="#contact">Request estimate</a></li>
+        </ul></div>
       </div>
-
       <div class="footer__bar">
-        <span>© <span data-year>2026</span> Armando Alvarez Contractor. All rights reserved.</span>
-        <div class="footer__social">
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
-          <a href="#">Houzz</a>
-        </div>
+        <span>© <span id="year">2026</span> Armando Alvarez Contractor · All rights reserved.</span>
+        <div class="footer__social"><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Houzz</a></div>
         <span>Licensed &amp; Insured · Lic. #000000</span>
       </div>
     </div>
   </footer>
 
-  <!-- Back to top -->
-  <button class="totop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <button class="totop" id="totop" aria-label="Back to top" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
 
-  <!-- Lightbox / showreel -->
-  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Alvarez showreel">
-    <div class="lightbox__inner">
-      <button class="lightbox__close" data-lightbox-close aria-label="Close video">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-      <div class="lightbox__fallback">Our showreel plays here on the live site.</div>
-      <video data-media muted loop playsinline controls preload="none"
-        poster="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=70">
-        <source src="https://videos.pexels.com/video-files/2249402/2249402-hd_1920_1080_25fps.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </div>
+  <script>
+  (function(){
+    "use strict";
+    var doc=document, root=doc.documentElement, body=doc.body;
+    body.classList.remove("no-js");
+    var reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
 
-  <script src="assets/js/main.js"></script>
+    /* ---- Theme toggle (persisted) ---- */
+    try{ var saved=localStorage.getItem("aa-theme"); if(saved) root.setAttribute("data-theme",saved); }catch(e){}
+    doc.getElementById("theme").addEventListener("click",function(){
+      var cur=root.getAttribute("data-theme");
+      if(!cur){ cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"; }
+      var next=cur==="dark"?"light":"dark";
+      root.setAttribute("data-theme",next);
+      try{ localStorage.setItem("aa-theme",next); }catch(e){}
+    });
+
+    /* ---- Year ---- */
+    doc.getElementById("year").textContent=new Date().getFullYear();
+
+    /* ---- Nav scroll state + progress + back-to-top ---- */
+    var nav=doc.getElementById("nav"), prog=doc.querySelector(".progress"), totop=doc.getElementById("totop");
+    function onScroll(){
+      var y=scrollY||pageYOffset;
+      nav.classList.toggle("is-stuck",y>16);
+      totop.classList.toggle("show",y>700);
+      var h=doc.documentElement.scrollHeight-innerHeight;
+      prog.style.transform="scaleX("+(h>0?Math.min(y/h,1):0)+")";
+    }
+    addEventListener("scroll",onScroll,{passive:true}); onScroll();
+    totop.addEventListener("click",function(){ scrollTo({top:0,behavior:reduce?"auto":"smooth"}); });
+
+    /* ---- Hero intro ---- */
+    requestAnimationFrame(function(){ doc.getElementById("hero").classList.add("is-in"); });
+
+    /* ---- Mobile menu ---- */
+    var tgl=doc.getElementById("navToggle"), menu=doc.getElementById("mobileMenu");
+    function setMenu(open){
+      nav.classList.toggle("open",open); menu.classList.toggle("is-open",open);
+      tgl.setAttribute("aria-expanded",open); body.style.overflow=open?"hidden":"";
+    }
+    tgl.addEventListener("click",function(){ setMenu(!menu.classList.contains("is-open")); });
+    menu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ setMenu(false); }); });
+    addEventListener("keydown",function(e){ if(e.key==="Escape") setMenu(false); });
+
+    /* ---- Lazy image loading with graceful fade over blueprint frame ---- */
+    var imgs=[].slice.call(doc.querySelectorAll("img[data-src]"));
+    function loadImg(img){
+      if(img.dataset.done) return; img.dataset.done="1";
+      var real=new Image();
+      real.onload=function(){ img.src=img.dataset.src; img.classList.add("is-loaded"); };
+      real.onerror=function(){ /* keep blueprint frame as tasteful fallback */ };
+      real.src=img.dataset.src;
+    }
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(ents){
+        ents.forEach(function(en){ if(en.isIntersecting){ loadImg(en.target); io.unobserve(en.target); } });
+      },{rootMargin:"400px 0px"});
+      imgs.forEach(function(i){ io.observe(i); });
+    } else { imgs.forEach(loadImg); }
+
+    /* ---- Scroll reveals ---- */
+    var reveals=[].slice.call(doc.querySelectorAll(".reveal"));
+    if("IntersectionObserver" in window && !reduce){
+      var ro=new IntersectionObserver(function(ents){
+        ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("is-in"); ro.unobserve(en.target); } });
+      },{rootMargin:"0px 0px -10% 0px",threshold:.12});
+      reveals.forEach(function(el){ ro.observe(el); });
+    } else { reveals.forEach(function(el){ el.classList.add("is-in"); }); }
+
+    /* ---- Process bars ---- */
+    var steps=[].slice.call(doc.querySelectorAll(".step"));
+    if("IntersectionObserver" in window){
+      var so=new IntersectionObserver(function(ents){
+        ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("is-in"); so.unobserve(en.target); } });
+      },{threshold:.4});
+      steps.forEach(function(el){ so.observe(el); });
+    } else { steps.forEach(function(el){ el.classList.add("is-in"); }); }
+
+    /* ---- Count-up stats ---- */
+    var counted=false;
+    function runCounts(){
+      if(counted) return; counted=true;
+      doc.querySelectorAll("[data-count]").forEach(function(el){
+        var target=parseFloat(el.getAttribute("data-count")), dec=parseInt(el.getAttribute("data-dec")||"0",10);
+        if(reduce){ el.textContent=target.toFixed(dec); return; }
+        var start=performance.now(), dur=1500;
+        function tick(now){
+          var p=Math.min((now-start)/dur,1), e=1-Math.pow(1-p,3);
+          el.textContent=(target*e).toFixed(dec);
+          if(p<1) requestAnimationFrame(tick); else el.textContent=target.toFixed(dec);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+    var statsEl=doc.querySelector(".stats");
+    if(statsEl && "IntersectionObserver" in window){
+      var co=new IntersectionObserver(function(ents){
+        ents.forEach(function(en){ if(en.isIntersecting){ runCounts(); co.disconnect(); } });
+      },{threshold:.4});
+      co.observe(statsEl);
+    } else { runCounts(); }
+
+    /* ---- Magnetic buttons (fine pointer only) ---- */
+    if(matchMedia("(pointer:fine)").matches && !reduce){
+      doc.querySelectorAll("[data-magnetic]").forEach(function(el){
+        var r;
+        el.addEventListener("mouseenter",function(){ r=el.getBoundingClientRect(); });
+        el.addEventListener("mousemove",function(e){
+          if(!r) r=el.getBoundingClientRect();
+          var x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+          el.style.transform="translate("+x*0.18+"px,"+y*0.26+"px)";
+        });
+        el.addEventListener("mouseleave",function(){ el.style.transform=""; });
+      });
+    }
+
+    /* ---- Form validation (client-side demo) ---- */
+    var form=doc.getElementById("form"), ok=doc.getElementById("formOk");
+    function invalid(f){
+      var v=f.value.trim();
+      if(f.type==="email") return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      return f.hasAttribute("required") && v==="";
+    }
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var bad=false;
+      ["name","email","project"].forEach(function(id){
+        var f=doc.getElementById(id), field=f.closest(".field");
+        if(invalid(f)){ field.classList.add("err"); bad=true; } else { field.classList.remove("err"); }
+      });
+      if(bad){ form.querySelector(".field.err input,.field.err textarea").focus(); return; }
+      ok.classList.add("show");
+      form.querySelectorAll("input,textarea,button").forEach(function(el){ el.disabled=true; });
+      /* Wire real delivery later: set <form action> to your Formspree/handler
+         and replace this block with a fetch() or a native submit. */
+    });
+    form.querySelectorAll("input,textarea").forEach(function(f){
+      f.addEventListener("input",function(){ f.closest(".field").classList.remove("err"); });
+    });
+  })();
+  </script>
 </body>
 </html>

@@ -1,16 +1,15 @@
 # Armando Alvarez — Landing Page
 
-A dark, cinematic, design-build contractor landing page built to the **"Sequel"** design
-system (pure black canvas, warm-cream accent, editorial hairline type with an italic serif
-payoff word). Hand-written HTML / CSS / JS — **no build step, no frameworks, no external
-dependencies.**
+A light, editorial, **design-build contractor** landing page built to the **"Drawing Set"**
+design system: a warm linen canvas, brown-black ink, and a restrained clay/terracotta accent,
+with an architect's-drawing motif throughout — hairline grid, dimension-line dividers, plate
+numbers, and blueprint image frames. Minimalist and calm, inspired by editorial Framer templates
+(Whenevr / Lavande).
 
-## Files
+**One self-contained file. No build step, no frameworks, no external JS/CSS dependencies.**
 
 ```
-index.html            # markup + copy
-assets/css/styles.css # full design system + components + responsive + reduced-motion
-assets/js/main.js     # interactions (see below)
+index.html    # markup + copy + inline CSS + inline JS
 ```
 
 Open `index.html` directly in a browser, or serve the folder:
@@ -21,51 +20,52 @@ npx http-server .      # then open the printed URL
 
 ## What's included
 
-- **Hero** with background video + cinematic gradient/grain fallback, word-by-word headline
-  reveal, floating glass "Reel" play button (opens a lightbox), and a scroll cue.
-- **Interactions & micro-interactions:** custom blend-mode cursor (desktop only), magnetic
-  buttons, animated underlines on every link, sheen/wipe fills on buttons, nav scroll state,
-  animated mobile menu, scroll-progress bar, IntersectionObserver scroll reveals, animated
-  count-up stats, hover-reveal service cards, masonry gallery with zoom, back-to-top, and a
-  fully validated contact form with inline error micro-states.
-- **Fully responsive** (1440 → 320px) with dedicated breakpoints at 1024 / 860 / 560px.
-- **Accessible:** visible focus states, `prefers-reduced-motion` support, semantic landmarks,
-  keyboard-operable menu/lightbox (Esc to close).
+- **Hero** — masked, staggered headline reveal; a "plate"-captioned hero image in a blueprint
+  frame; a floating spec chip (delivered / on-schedule / warranty).
+- **Design system** — warm-linen palette with a clay accent, a serif display face paired with a
+  clean sans and a **mono utility face** used for labels, plate numbers, and measurements.
+- **Light + dark themes** — automatic (`prefers-color-scheme`) plus a manual toggle that persists
+  in `localStorage`.
+- **Interactions** — sticky/condensing nav, scroll-progress bar, IntersectionObserver reveals,
+  animated count-up stats, credentials marquee, hover-reveal service grid, hover-caption gallery,
+  magnetic buttons (fine-pointer only), animated mobile menu, back-to-top, and a validated
+  contact form with inline error + success states.
+- **Fully responsive** (1240 → 320px) with breakpoints at 1024 / 860 / 560px.
+- **Accessible** — semantic landmarks, visible focus rings, `prefers-reduced-motion` support,
+  keyboard-operable menu (Esc to close), and a no-JS fallback that shows all content.
 
-## ⚠️ Before you go live — replace the placeholders
+## Imagery — Unsplash
 
-This sandbox can't reach the internet, so imagery is referenced by URL and falls back to a
-cinematic gradient if a URL is missing. On your machine the images load normally. Swap these:
+Every photo is an `<img data-src="…unsplash…">` lazy-loaded over a **blueprint placeholder frame**.
+When a photo loads it fades in; if a URL ever fails, the tasteful blueprint frame stays in place,
+so the layout never breaks.
 
-### 1. Photography (Unsplash placeholders → your real project photos)
-Every `<img>` uses an `images.unsplash.com` URL as a stand-in. Search-and-replace them with
-your own high-res project photography (or keep the Unsplash shots if the license suits you —
-they hotlink freely). Each image has a `data-media` attribute; if a photo fails to load, the
-element hides and a tasteful dark gradient shows in its place, so the layout never breaks.
+> **Note on preview:** in a sandboxed preview host (e.g. the claude.ai artifact viewer) external
+> images are blocked by a strict content-security policy, so you'll see the blueprint frames instead
+> of the photos. Served from this repo or any normal host, the Unsplash photos load normally.
+> Swap these URLs for the client's own project photography before launch.
 
-### 2. Hero + reel video (Pexels placeholders → your footage)
-- Hero: `<video>` inside `.hero__media` — `assets`/`index.html`, `videos.pexels.com/...`
-- Reel: `<video>` inside `.lightbox__inner`
-Replace with your own compressed MP4 (H.264, ~1080p, muted, short loop for the hero).
+## Before you go live — replace the placeholders
 
-### 3. Business details (currently placeholder)
 | Field | Placeholder | Where |
 |-------|-------------|-------|
-| Phone | `(555) 210-4408` / `tel:+15552104408` | nav, hero-menu, contact, footer |
-| Email | `build@armandoalvarezcontractor.com` | nav-menu, contact, footer |
-| Address | `1200 Craftsman Way, Your City, ST 00000` | contact |
-| Hours | `Mon–Fri, 7am–5pm` | contact |
+| Phone | `(555) 210-4408` / `tel:+15552104408` | nav, mobile menu, contact, footer |
+| Email | `build@armandoalvarezcontractor.com` | mobile menu, contact, footer |
+| Address | `1200 Craftsman Way, Your City, ST` | contact |
+| Hours | `Mon–Fri · 7am – 5pm` | contact |
 | License # | `Lic. #000000` | footer |
+| Photos | `images.unsplash.com/...` placeholders | throughout |
 
-`555` numbers are intentionally the fiction-safe range — swap in the real number.
+`555` numbers are the fiction-safe range — swap in the real number.
 
-### 4. Contact form
-The form validates on the client and shows a success state, but **does not submit anywhere
-yet.** Point it at your handler (Formspree, Netlify Forms, your backend, etc.) by adding an
-`action`/`method` to `<form class="form">` and removing the `e.preventDefault()` success
-shortcut in `main.js` (`form.addEventListener("submit", …)`), or wire it to `fetch()`.
+### Contact form
+
+The form validates on the client and shows a success state, but **does not submit anywhere yet.**
+To wire real delivery: add an `action`/`method` to `<form id="form">` (Formspree, Netlify Forms,
+your backend, etc.) and replace the marked block at the end of the submit handler in the inline
+`<script>` with a `fetch()` or native submit.
 
 ## Design tokens
 
-All colors, type scale, spacing, radii, shadows and motion live as CSS custom properties at
-the top of `styles.css` (`:root`), mapped directly from the provided design system.
+All colors, type stacks, spacing, radii, and motion live as CSS custom properties at the top of the
+inline `<style>` (`:root`), with light, `prefers-color-scheme: dark`, and `[data-theme]` variants.
