@@ -1,15 +1,16 @@
 # Armando Alvarez — Landing Page
 
-A light, editorial, **design-build contractor** landing page built to the **"Drawing Set"**
-design system: a warm linen canvas, brown-black ink, and a restrained clay/terracotta accent,
-with an architect's-drawing motif throughout — hairline grid, dimension-line dividers, plate
-numbers, and blueprint image frames. Minimalist and calm, inspired by editorial Framer templates
-(Whenevr / Lavande).
+A neat, minimalist **design-build contractor** landing page: a near-white warm canvas, a single
+restrained clay accent, **Manrope** headlines and **DM Sans** body/captions, generous whitespace,
+and precise, orderly grids. Inspired by the calm editorial minimalism of Framer templates like
+Whenevr.
 
-**One self-contained file. No build step, no frameworks, no external JS/CSS dependencies.**
+**One self-contained file. No build step, no frameworks, no external requests** — the fonts are
+embedded as woff2 data URIs, so it renders identically offline, on any host, and in a sandboxed
+preview.
 
 ```
-index.html    # markup + copy + inline CSS + inline JS
+index.html    # markup + copy + inline CSS (incl. embedded fonts) + inline JS
 ```
 
 Open `index.html` directly in a browser, or serve the folder:
@@ -20,30 +21,33 @@ npx http-server .      # then open the printed URL
 
 ## What's included
 
-- **Hero** — masked, staggered headline reveal; a "plate"-captioned hero image in a blueprint
-  frame; a floating spec chip (delivered / on-schedule / warranty).
-- **Design system** — warm-linen palette with a clay accent, a serif display face paired with a
-  clean sans and a **mono utility face** used for labels, plate numbers, and measurements.
+- **Hero** — staggered line-by-line headline reveal (Manrope), short supporting copy, dual CTAs,
+  and a wide hero image frame.
+- **Design system** — near-white warm palette (`--paper #F8F7F4`) with one clay accent
+  (`--clay #B4573A`); Manrope for all headings/UI, DM Sans for body and captions.
 - **Light + dark themes** — automatic (`prefers-color-scheme`) plus a manual toggle that persists
   in `localStorage`.
-- **Interactions** — sticky/condensing nav, scroll-progress bar, IntersectionObserver reveals,
-  animated count-up stats, credentials marquee, hover-reveal service grid, hover-caption gallery,
-  magnetic buttons (fine-pointer only), animated mobile menu, back-to-top, and a validated
-  contact form with inline error + success states.
-- **Fully responsive** (1240 → 320px) with breakpoints at 1024 / 860 / 560px.
+- **Interactions** — condensing sticky nav, scroll-progress bar, IntersectionObserver reveals,
+  animated count-up stats, a quiet credentials marquee, hover-lift service cards, a fully
+  responsive slide-down mobile menu (Esc / tap-to-close, scroll-locked), back-to-top, and a
+  validated contact form with inline error + success states.
+- **Fully responsive** (1200 → 320px) with breakpoints at 1000 / 820 / 560px.
 - **Accessible** — semantic landmarks, visible focus rings, `prefers-reduced-motion` support,
-  keyboard-operable menu (Esc to close), and a no-JS fallback that shows all content.
+  keyboard-operable menu, and a no-JS fallback that shows all content.
 
-## Imagery — Unsplash
+## Imagery — placeholders, ready to swap
 
-Every photo is an `<img data-src="…unsplash…">` lazy-loaded over a **blueprint placeholder frame**.
-When a photo loads it fades in; if a URL ever fails, the tasteful blueprint frame stays in place,
-so the layout never breaks.
+Every image slot is a clean neutral **placeholder** (`.shot`) with a small corner tag naming what
+belongs there (e.g. *Custom home*, *Oakview Kitchen*). Drop in real photography by placing an
+`<img>` inside the `.shot` element:
 
-> **Note on preview:** in a sandboxed preview host (e.g. the claude.ai artifact viewer) external
-> images are blocked by a strict content-security policy, so you'll see the blueprint frames instead
-> of the photos. Served from this repo or any normal host, the Unsplash photos load normally.
-> Swap these URLs for the client's own project photography before launch.
+```html
+<div class="shot"><img src="your-photo.jpg" alt="…" /><span class="shot__tag">Custom home</span></div>
+```
+
+The `<img>` fills the frame (`object-fit:cover`) and covers the placeholder automatically. Source
+high-res photos from Unsplash / Lummi (or the client's own project photos) and swap them in — no
+other markup changes needed.
 
 ## Before you go live — replace the placeholders
 
@@ -54,7 +58,7 @@ so the layout never breaks.
 | Address | `1200 Craftsman Way, Your City, ST` | contact |
 | Hours | `Mon–Fri · 7am – 5pm` | contact |
 | License # | `Lic. #000000` | footer |
-| Photos | `images.unsplash.com/...` placeholders | throughout |
+| Photos | neutral `.shot` placeholders | throughout |
 
 `555` numbers are the fiction-safe range — swap in the real number.
 
